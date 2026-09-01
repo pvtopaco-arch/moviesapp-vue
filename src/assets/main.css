@@ -1,0 +1,425 @@
+:root {
+  --bg-void: #0a0d13;
+  --bg-surface: #12161f;
+  --bg-elevated: #1a2030;
+  --bg-elevated-hover: #212840;
+  --line: #262d3f;
+  --text-primary: #eceef2;
+  --text-muted: #8b93a7;
+  --text-faint: #5a6272;
+  --accent-gold: #d4a72c;
+  --accent-gold-bright: #f2c94c;
+  --accent-coral: #e8734a;
+  --accent-danger: #e0524b;
+
+  --bs-body-bg: var(--bg-void);
+  --bs-body-color: var(--text-primary);
+  --bs-primary: #d4a72c;
+  --bs-primary-rgb: 212, 167, 44;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--bg-void);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(212, 167, 44, 0.08), transparent),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(232, 115, 74, 0.06), transparent);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-display {
+  font-family: "Bebas Neue", "Inter", sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Navbar */
+.navbar-cine {
+  background-color: rgba(10, 13, 19, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.navbar-cine .navbar-brand {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--text-primary) !important;
+}
+
+.navbar-cine .navbar-brand .brand-accent {
+  color: var(--accent-gold-bright);
+}
+
+.navbar-cine .nav-link {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.9rem !important;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-cine .nav-link:hover {
+  color: var(--text-primary);
+}
+
+.navbar-cine .nav-link.router-link-active {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-gold-bright);
+}
+
+.navbar-cine .badge-admin {
+  background: rgba(212, 167, 44, 0.15);
+  color: var(--accent-gold-bright);
+  border: 1px solid rgba(212, 167, 44, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.55rem;
+}
+
+/* Buttons */
+.btn-gold {
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #14100a;
+  font-weight: 600;
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-gold-bright);
+  border-color: var(--accent-gold-bright);
+  color: #14100a;
+}
+
+.btn-outline-gold {
+  color: var(--accent-gold-bright);
+  border-color: var(--accent-gold);
+  background: transparent;
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #14100a;
+}
+
+.btn-ghost {
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--text-faint);
+  background: var(--bg-elevated);
+}
+
+/* Bootstrap's .text-muted utility defaults to a grey tuned for light
+   backgrounds, which is hard to read here - override it to a bright,
+   legible tone for the dark theme. */
+.text-muted {
+  color: #ffffff !important;
+  opacity: 0.75;
+}
+
+a {
+  color: var(--accent-gold-bright);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+/* Hero */
+.hero-section {
+  padding: 5.5rem 0 4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.hero-title .line-gold {
+  color: var(--accent-gold-bright);
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 46ch;
+}
+
+.reel-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.reel-tile {
+  aspect-ratio: 2 / 3;
+  border-radius: 6px;
+  background: linear-gradient(155deg, var(--bg-elevated), var(--bg-surface));
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.reel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit; /* matches whatever radius .reel-tile already uses */
+    display: block;
+}
+ 
+ 
+.reel-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(212, 167, 44, 0.12), transparent 60%);
+}
+
+.reel-tile:nth-child(2) {
+  transform: translateY(-14px);
+}
+
+.reel-tile:nth-child(5) {
+  transform: translateY(-14px);
+}
+
+/* Cards */
+.card-cine {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  height: 100%;
+}
+
+.card-cine:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 167, 44, 0.4);
+}
+
+.card-cine .card-poster {
+  aspect-ratio: 2 / 3;
+  background: linear-gradient(155deg, var(--bg-elevated), var(--bg-void));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.card-cine .card-poster i {
+  font-size: 2.2rem;
+  color: var(--text-faint);
+}
+
+.card-cine .card-poster .poster-year {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(10, 13, 19, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1rem 0.45rem;
+}
+
+.card-cine .card-body-cine {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.card-cine .card-title-cine {
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin-bottom: 0.15rem;
+  color: var(--text-primary);
+}
+
+.card-cine .card-director {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.genre-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--accent-coral);
+  background: rgba(232, 115, 74, 0.12);
+  border: 1px solid rgba(232, 115, 74, 0.35);
+  border-radius: 20px;
+  padding: 0.15rem 0.65rem;
+}
+
+
+/* Add "overflow: hidden;" to your existing .card-poster rule if it isn't there already.
+   Without it, the image can spill outside the card since it's larger than the box. */
+.card-poster {
+    overflow: hidden;
+    /* keep your existing aspect-ratio, background, position: relative, etc. */
+}
+
+.poster-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0; /* keeps it behind .poster-year, which should have z-index: 1 or higher */
+}
+
+/* Auth */
+.auth-shell {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 2.25rem;
+}
+
+.auth-card h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.form-control-cine {
+  background-color: var(--bg-void);
+  border: 1px solid var(--line);
+  color: var(--text-primary);
+}
+
+.form-control-cine:focus {
+  background-color: var(--bg-void);
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 0.2rem rgba(212, 167, 44, 0.15);
+}
+
+.form-control-cine::placeholder {
+  color: var(--text-faint);
+}
+
+/* Movie detail */
+.detail-shell {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 2.5rem;
+}
+
+.detail-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.detail-meta {
+  color: var(--text-muted);
+}
+
+.comment-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+/* Admin */
+.table-cine {
+  color: var(--text-primary);
+  border-color: var(--line);
+}
+
+.table-cine thead {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.table-cine > :not(caption) > * > * {
+  background-color: transparent;
+  border-bottom-color: var(--line);
+  color: var(--text-primary);
+}
+
+.modal-cine .modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  color: var(--text-primary);
+}
+
+.modal-cine .modal-header,
+.modal-cine .modal-footer {
+  border-color: var(--line);
+}
+
+.stat-pill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+}
+
+.stat-pill .num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.9rem;
+  color: var(--accent-gold-bright);
+  line-height: 1;
+}
+
+.stat-pill .label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.section-eyebrow {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+}
